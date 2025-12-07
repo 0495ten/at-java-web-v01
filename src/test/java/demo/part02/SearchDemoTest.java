@@ -18,7 +18,7 @@ public class SearchDemoTest {
         element(By.id("user-password")).shouldBe(visible);
         $(By.id("user-password")).shouldBe(visible);
 
-        $(By.name("user-email")).shouldBe(visible);
+        $(By.id("user-email")).shouldBe(visible);
         $(By.className("btn")).shouldBe(visible);
         $(By.tagName("h3")).shouldBe(visible);
         $(By.linkText("Регистрация нового пользователя в системе")).shouldBe(visible);
