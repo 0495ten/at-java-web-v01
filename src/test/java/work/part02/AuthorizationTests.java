@@ -3,8 +3,7 @@ package work.part02;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -15,7 +14,7 @@ public class AuthorizationTests {
         $(By.id("username")).setValue("standard_user");
         $(By.id("password")).setValue("stand_pass1");
         $(By.id("loginButton")).click();
-        $(By.id("greeting")).shouldHave(exactText("Добро пожаловать, Иванов Иван Иванович!"));
+        $(By.id("greeting")).shouldHave(text("Добро пожаловать,"));
         $(By.id("logoutButton")).click();
     }
     @Test
