@@ -1,5 +1,6 @@
 package demo.part04;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -7,6 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class iframeTask {
+    @Tag("SmokeTest")
     @Test
     void test01IFrame() {
         //Configuration.pageLoadTimeout = 120_000;
