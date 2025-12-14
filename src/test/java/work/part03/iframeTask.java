@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class iframeTask {
-    @Tag("SmokeTest")
     @Test
+    @Tag("SmokeTest")
     void test01IFrame() {
         //Configuration.pageLoadTimeout = 120_000;
         Configuration.pageLoadStrategy = "eager";
