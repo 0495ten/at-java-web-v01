@@ -8,7 +8,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-public class SearchPage {
+public class SearchPage1 {
     SelenideElement
             cityFrom = $("#departureCity"),
             cityTo = $("#arrivalCity"),

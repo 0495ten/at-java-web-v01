@@ -2,16 +2,13 @@ package work.part07;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import demo.part07.pages.FlightsListPage;
+import demo.part07.pages.FlightsListPage1;
 import work.part07.pages.LoginPage;
-import work.part07.pages.RegistrationPage;
 import work.part07.pages.SearchPage;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -59,7 +56,7 @@ public class POMHomeWorkDay4 {
         SearchPage searchPage = new SearchPage();
         searchPage.fidnButtonWork();
 
-        FlightsListPage flightsList = new FlightsListPage();
+        FlightsListPage1 flightsList = new FlightsListPage1();
         flightsList.newSearch();
 
         searchPage.logoutExist();

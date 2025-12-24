@@ -6,10 +6,10 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import demo.part07.pages.FlightsListPage;
-import demo.part07.pages.LoginPage;
-import demo.part07.pages.RegistrationPage;
-import demo.part07.pages.SearchPage;
+import demo.part07.pages.FlightsListPage1;
+import demo.part07.pages.LoginPage1;
+import demo.part07.pages.RegistrationPage1;
+import demo.part07.pages.SearchPage1;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.parallel.Execution;
@@ -36,33 +36,33 @@ public class POMFlightsTests {
     // 1. Неуспешный логин
     @Test
     void test01WrongPassword() {
-        LoginPage myLoginPage = new LoginPage();
-        myLoginPage.login("standard_user", "WrongPassword");
-        myLoginPage.isLoginUnsuccessful();
+        LoginPage1 myLoginPage1 = new LoginPage1();
+        myLoginPage1.login("standard_user", "WrongPassword");
+        myLoginPage1.isLoginUnsuccessful();
     }
 
     // 2. Не задана дата
     @Test
     void test02NoDate() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "stand_pass1");
-        loginPage.isLoginSuccessful("Иванов Иван Иванович");
+        LoginPage1 loginPage1 = new LoginPage1();
+        loginPage1.login("standard_user", "stand_pass1");
+        loginPage1.isLoginSuccessful("Иванов Иван Иванович");
 
-        SearchPage searchPage = new SearchPage();
-        searchPage.search("");
-        searchPage.isDepartureDateEmpty();
+        SearchPage1 searchPage1 = new SearchPage1();
+        searchPage1.search("");
+        searchPage1.isDepartureDateEmpty();
     }
     // 3. Не найдены рейсы
     @Test
     void test03FlightsNotFound() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "stand_pass1");
-        loginPage.isLoginSuccessful("Иванов Иван Иванович");
+        LoginPage1 loginPage1 = new LoginPage1();
+        loginPage1.login("standard_user", "stand_pass1");
+        loginPage1.isLoginSuccessful("Иванов Иван Иванович");
 
-        SearchPage searchPage = new SearchPage();
-        searchPage.search("16.03.2026", "Казань", "Париж");
+        SearchPage1 searchPage1 = new SearchPage1();
+        searchPage1.search("16.03.2026", "Казань", "Париж");
 
-        FlightsListPage flightsList = new FlightsListPage();
+        FlightsListPage1 flightsList = new FlightsListPage1();
         flightsList.isNoFlights();
     }
 
@@ -70,52 +70,52 @@ public class POMFlightsTests {
     @Test
     void test04SuccessRegistrationDefault() {
         // Страница логина
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "stand_pass1");
-        loginPage.isLoginSuccessful("Иванов Иван Иванович");
+        LoginPage1 loginPage1 = new LoginPage1();
+        loginPage1.login("standard_user", "stand_pass1");
+        loginPage1.isLoginSuccessful("Иванов Иван Иванович");
 
         // Страница поиска рейсов
-        SearchPage searchPage = new SearchPage();
-        searchPage.search("16.03.2026", "Москва", "Нью-Йорк");
+        SearchPage1 searchPage1 = new SearchPage1();
+        searchPage1.search("16.03.2026", "Москва", "Нью-Йорк");
 
         // Страница со списком найденных рейсов
-        FlightsListPage flightsList = new FlightsListPage();
+        FlightsListPage1 flightsList = new FlightsListPage1();
         flightsList.registerToFirstFlight();
 
         // Страница регистрации на рейс
-        RegistrationPage registrationPage = new RegistrationPage();
-        registrationPage.isFlightDataCorrect("Москва", "Нью-Йорк");
-        registrationPage.successRegistration();
+        RegistrationPage1 registrationPage1 = new RegistrationPage1();
+        registrationPage1.isFlightDataCorrect("Москва", "Нью-Йорк");
+        registrationPage1.successRegistration();
     }
 
     // 5. Пустые поля
     @Test
     void test05EmptyField() {
         // Страница логина
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "stand_pass1");
-        loginPage.isLoginSuccessful("Иванов Иван Иванович");
+        LoginPage1 loginPage1 = new LoginPage1();
+        loginPage1.login("standard_user", "stand_pass1");
+        loginPage1.isLoginSuccessful("Иванов Иван Иванович");
 
         // Страница поиска рейсов
-        SearchPage searchPage = new SearchPage();
-        searchPage.search("16.03.2026", "Москва", "Нью-Йорк");
+        SearchPage1 searchPage1 = new SearchPage1();
+        searchPage1.search("16.03.2026", "Москва", "Нью-Йорк");
 
         // Страница со списком найденных рейсов
-        FlightsListPage flightsList = new FlightsListPage();
+        FlightsListPage1 flightsList = new FlightsListPage1();
         flightsList.registerToFirstFlight();
 
         // Страница регистрации на рейс
-        RegistrationPage registrationPage = new RegistrationPage();
-        registrationPage.isFlightDataCorrect("Москва", "Нью-Йорк");
-        registrationPage.registration("", "", "", "");
-        registrationPage.isErrorFillAllFied();
+        RegistrationPage1 registrationPage1 = new RegistrationPage1();
+        registrationPage1.isFlightDataCorrect("Москва", "Нью-Йорк");
+        registrationPage1.registration("", "", "", "");
+        registrationPage1.isErrorFillAllFied();
     }
 
     // 6. Успешный логин под разными пользователями.
     @ParameterizedTest
     @CsvFileSource (resources = "logins.csv")
     void test06MuliLogin(String userName, String passWord, String fio) {
-        LoginPage lp = new LoginPage();
+        LoginPage1 lp = new LoginPage1();
         lp.login(userName,passWord);
         lp.isLoginSuccessful(fio);
         sleep(5000);
@@ -125,10 +125,10 @@ public class POMFlightsTests {
 
     @Test
     void test07DateInPast() {
-        LoginPage lp = new LoginPage();
+        LoginPage1 lp = new LoginPage1();
         lp.login("standard_user", "stand_pass1");
 
-        SearchPage sp = new SearchPage();
+        SearchPage1 sp = new SearchPage1();
         sp.search("01.01.2024");
         sp.isDateInPast();
     }
@@ -141,43 +141,43 @@ public class POMFlightsTests {
 
     @Test
     void test08LongTest() {
-        LoginPage lp = new LoginPage();
+        LoginPage1 lp = new LoginPage1();
         lp.login("standard_user", "stand_pass1");
 
         // "Поиск - не найдены рейсы -
-        SearchPage searchPage = new SearchPage();
-        searchPage.search("16.03.2026", "Казань", "Париж");
+        SearchPage1 searchPage1 = new SearchPage1();
+        searchPage1.search("16.03.2026", "Казань", "Париж");
 
-        FlightsListPage flightsList = new FlightsListPage();
+        FlightsListPage1 flightsList = new FlightsListPage1();
         flightsList.isNoFlights();
 
         // возврат на страницу поиска - найдены рейсы -
         flightsList.newSearch();
-        searchPage.search("16.03.2026", "Москва", "Нью-Йорк");
+        searchPage1.search("16.03.2026", "Москва", "Нью-Йорк");
 
         // Регистрация на 1-й рейс в списке - не задан номер паспорта -
         flightsList.registerToFirstFlight();
 
-        RegistrationPage registrationPage = new RegistrationPage();
-        registrationPage.isFlightDataCorrect("Москва", "Нью-Йорк");
-        registrationPage.registration("Иван Петров", "", "test@mail.ru", "+79999999999");
-        registrationPage.isErrorFillAllFied();
+        RegistrationPage1 registrationPage1 = new RegistrationPage1();
+        registrationPage1.isFlightDataCorrect("Москва", "Нью-Йорк");
+        registrationPage1.registration("Иван Петров", "", "test@mail.ru", "+79999999999");
+        registrationPage1.isErrorFillAllFied();
 
         // повторный ввод паспорта с корректными данными - успешная регистрация."
-        registrationPage.registration("Иван Петров", "1234 123456", "test@mail.ru", "+79999999999");
-        registrationPage.successRegistration();
+        registrationPage1.registration("Иван Петров", "1234 123456", "test@mail.ru", "+79999999999");
+        registrationPage1.successRegistration();
     }
 
     @Test
     void test09DemoCollection() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("standard_user", "stand_pass1");
+        LoginPage1 loginPage1 = new LoginPage1();
+        loginPage1.login("standard_user", "stand_pass1");
 
-        SearchPage searchPage = new SearchPage();
-        searchPage.search("16.03.2026", "Москва", "Нью-Йорк");
+        SearchPage1 searchPage1 = new SearchPage1();
+        searchPage1.search("16.03.2026", "Москва", "Нью-Йорк");
 
         // Страница со списком найденных рейсов
-        FlightsListPage flightsList = new FlightsListPage();
+        FlightsListPage1 flightsList = new FlightsListPage1();
         flightsList.sortByPrice();
         flightsList.isTimeSorted();
     }

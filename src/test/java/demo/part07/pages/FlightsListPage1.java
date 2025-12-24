@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class FlightsListPage {
+public class FlightsListPage1 {
     SelenideElement
             flightsTable = $("#flightsTable"),
             registerButton = $x("//button[.='Зарегистрироваться']"),

@@ -5,11 +5,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-public class LoginPage {
+public class LoginPage1 {
     SelenideElement username; // = $("#username");
     SelenideElement password = $("#password");
 
@@ -18,7 +17,7 @@ public class LoginPage {
         errorMessage = $("#message"),
         greeting = $("#greeting");
 
-    public LoginPage() {
+    public LoginPage1() {
         // Конструктор писать не обязательно
         // Так используют, когда, например, надо из базы данных взять
         // информацию о локаторе

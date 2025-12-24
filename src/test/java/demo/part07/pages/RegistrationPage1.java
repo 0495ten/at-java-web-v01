@@ -9,7 +9,7 @@ import org.openqa.selenium.Alert;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RegistrationPage {
+public class RegistrationPage1 {
     SelenideElement
         flightInfo = $("#flightRegistrationInfo"),
         buttonFinishRegistration = $x("//button[contains(.,'Завершить регистрацию')]"),
