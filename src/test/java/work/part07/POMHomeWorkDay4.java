@@ -2,7 +2,7 @@ package work.part07;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import demo.part07.pages.FlightsListPage1;
+import work.part07.pages.FlightsListPage;
 import work.part07.pages.LoginPage;
 import work.part07.pages.SearchPage;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -56,9 +56,20 @@ public class POMHomeWorkDay4 {
         SearchPage searchPage = new SearchPage();
         searchPage.fidnButtonWork();
 
-        FlightsListPage1 flightsList = new FlightsListPage1();
+        FlightsListPage flightsList = new FlightsListPage();
         flightsList.newSearch();
 
         searchPage.logoutExist();
+    }
+    @Test
+    void test04SearchPastDate() {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login("standard_user", "stand_pass1");
+        loginPage.isLoginSuccessful("Иванов Иван Иванович");
+
+        SearchPage searchPage = new SearchPage();
+        searchPage.SetPastDate();
+        searchPage.fidnButtonWork();
+        searchPage.isDateInPast();
     }
 }

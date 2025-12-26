@@ -50,6 +50,12 @@ public class SearchPage {
     public void fidnButtonWork(){
         this.findButton.click();
     }
+    @Step("Проверка, что кнопка 'Найти' работает")
+    public void SetPastDate(){
+        String date = "01.01.2020";
+        String correctedDate = makeDateCorrect(date);
+        this.departureDate.setValue(correctedDate);
+    }
 
     private String makeDateCorrect(String date) {
         //Передаём дату в формате DD.MM.YYYY
