@@ -37,7 +37,6 @@ public class POMHomeWorkDay4 {
         myLoginPage.isLoginUnsuccessful();
     }
 
-    // 2. Не задана дата
     @Test
     void test02LogoutButton() {
         LoginPage loginPage = new LoginPage();
